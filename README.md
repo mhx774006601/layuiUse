@@ -16,4 +16,6 @@ layui使用小结
 
  ３.　type:1的形式弹窗，使用此　语句　layui.table.reload('testReload');刷新父页表格数据
  
+ 其中　testReload　为表格ID
+ 
 		
