@@ -18,4 +18,12 @@ layui使用小结
  
  其中　testReload　为表格ID
  
+ 4. 详情页回显数据
+ 
+         <select disabled id='selectId'>
+                  <!-- 后台读取值 -->
+           </select>
+ 
+ 　select下拉框： $("<option value="+datas.jobExcuteMode+">"+datas.jobExcuteMode+"</option>").appendTo("#selectId");
+ 
 		
