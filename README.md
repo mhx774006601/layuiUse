@@ -40,4 +40,53 @@ layui使用小结
 	 
            $("input[name=radio][value=1]").attr("checked", datas.jFailover == 1 ? true : false);
            $("input[name=radio][value=0]").attr("checked", datas.jFailover == 0 ? true : false);
+	   
+	   
+　修改页面中的回显：
+ 
+ 　　　 $.ajax({
+                url: '下拉框中的接口地址',
+                type: 'get',
+                success: function(data){
+                     taskTypes = data.taskType; //作业类型
+                    taskStatuss = data.taskStatus;  //作业状态
+                    regCodes = data.regCode;
+                    taskGroupCodes = data.taskGroupCode; //作业组编码
+                    taskSubmitCycles = data.taskSubmitCycle;
+                    taskExcuteModes = data.taskExcuteMode;
+                    taskRunModes = data.taskRunMode;
+                    taskShardingstrategys = data.taskShardingStrategyClass;
+               
+                }
+            })
+ 　　　
+	
+	 //调接口数据 ,先回显出数据
+            var jobCode = window.sessionStorage.getItem('jobCode');
+            $.ajax({
+                url: batchUrl + 'job-info/'+jobCode,
+                type: 'get',
+                xhrFields:{
+                    withCredentials:true
+                },
+                crossDomain:true,
+                success:function(data){
+                    var datas = data.data;
+		    //作业运行方式
+                $.each(taskExcuteModes,function(index,item){
+                    if(!taskRunMode){
+                        var option = new Option(item.name,item.code);
+                    }else {
+                        var option = new Option(item.name,item.code);
+                        // // 如果是之前的内容则设置选中
+                        if(item.code == datas.taskRunMode) {
+                            option.setAttribute("selected",'true');
+                        }
+                    };
+                    $('#taskRunMode').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
 		
+		
+		}
+	});
