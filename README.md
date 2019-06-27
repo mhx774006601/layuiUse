@@ -44,21 +44,42 @@ layui使用小结
 	   
 　修改页面中的回显：
  
+   <!--  html -->
+      <select id='jobRunMode' name="jobRunMode">
+                 <!-- 后台读取值 -->
+       </select>
+ 
+    <!-- 请求接口，实现功能　-->
+    
  　　　 $.ajax({
+     
                 url: '下拉框中的接口地址',
+		
                 type: 'get',
+		
                 success: function(data){
+		
                      taskTypes = data.taskType; //作业类型
+		     
                     taskStatuss = data.taskStatus;  //作业状态
+		    
                     regCodes = data.regCode;
+		    
                     taskGroupCodes = data.taskGroupCode; //作业组编码
+		    
                     taskSubmitCycles = data.taskSubmitCycle;
+		    
                     taskExcuteModes = data.taskExcuteMode;
+		    
                     taskRunModes = data.taskRunMode;
+		    
                     taskShardingstrategys = data.taskShardingStrategyClass;
+		    
                
                 }
+		
             })
+	    
  　　　
 	
 	 //调接口数据 ,先回显出数据
