@@ -25,5 +25,14 @@ layui使用小结
            </select>
  
  　select下拉框： $("<option value="+datas.jobExcuteMode+">"+datas.jobExcuteMode+"</option>").appendTo("#selectId");
- 
+  
+  单选按钮:  
+       <div class="layui-input-block" id="radios" style="margin-left:180px;">
+       <!-- 后台接口获取 -->
+               <input type="radio" name="radio" value="0" title="否" disabled>
+                <input type="radio" name="radio" value="1" title="是" disabled>
+         </div>
+	 
+           $("input[name=radio][value=1]").attr("checked", datas.jFailover == 1 ? true : false);
+           $("input[name=radio][value=0]").attr("checked", datas.jFailover == 0 ? true : false);
 		
