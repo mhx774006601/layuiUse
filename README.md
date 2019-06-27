@@ -24,7 +24,9 @@ layui使用小结
                   <!-- 后台读取值 -->
            </select>
  
- 　select下拉框： $("<option value="+datas.jobExcuteMode+">"+datas.jobExcuteMode+"</option>").appendTo("#selectId");
+ 　select下拉框： 
+  
+     $("<option value="+datas.jobExcuteMode+">"+datas.jobExcuteMode+"</option>").appendTo("#selectId");
   
   单选按钮: 
   
@@ -33,6 +35,8 @@ layui使用小结
                <input type="radio" name="radio" value="0" title="否" disabled>
                 <input type="radio" name="radio" value="1" title="是" disabled>
          </div>
+	 
+	 回显结果：
 	 
            $("input[name=radio][value=1]").attr("checked", datas.jFailover == 1 ? true : false);
            $("input[name=radio][value=0]").attr("checked", datas.jFailover == 0 ? true : false);
