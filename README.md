@@ -111,3 +111,14 @@ layui使用小结
 		
 		}
 	});
+
+
+5. layui.tree 使用　
+
+　在弹窗中，点击确定按钮，对树形菜单进行刷新： //更新树形菜单
+                    parent.window.location.reload();
+             点击取消按钮，对树形菜单不添加叶子节点，代码为：
+	     //重载菜单树，禁止添加节点
+            parent.layui.tree.reload('workTree',{
+                data: []
+            })
