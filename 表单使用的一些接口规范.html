@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>有关表单使用中的一些数据格式要求</title>
+	</head>
+	<body>
+		<p>
+			有的时候在做项目开发的时候，会遇到一些下拉框调接口回显数据的情况，或者是提交表单向后台传送数据的情况，还有的是复选框，单选框等情况
+		</p>
+		<p>
+			1.　表单提交数据的格式（有关layui的表单格式）
+		</p>
+		<div style="background: #FFFACD;padding:10px;position: relative;">
+			<h4>打印出来的格式</h4>
+			{
+				close: "on",
+				date: "2019-08-06",
+				email: "4444@126.com",
+				identity: "132569856985698569",
+				interest: "0",
+				like1[read]: "on",
+				like1[write]: "on",
+				like[read]: "on",
+				like[write]: "on",
+				modules: "1",
+				number: "444444444444",
+				open: "on",
+				password: "123456789",
+				phone: "13658965896",
+				price_max: "88",
+				price_min: "14",
+				quiz: "你工作的第一个城市",
+				quiz1: "你的工号",
+				quiz2: "杭州",
+				quiz3: "余杭区",
+				sex: "男",
+				title: "44444444444444444444444",
+				url: "https://www.baidu.com",
+				username: "44444444444"
+		}
+
+		</div>
+		<div style="background: #EEE8AA;padding:10px;">
+			<h4> 提交上去的格式</h4>
+			form = {
+				    "title": "44444444444444444444444", 
+				    "username": "44444444444", 
+				    "phone": "13658965896", 
+				    "email": "4444@126.com", 
+				    "number": "444444444444", 
+				    "date": "2019-08-06", 
+				    "url": "https://www.baidu.com", 
+				    "identity": "132569856985698569", 
+				    "password": "123456789", 
+				    "price_min": "14", 
+				    "price_max": "88", 
+				    "interest": "0", 
+				    "quiz": "你工作的第一个城市", 
+				    "modules": "1", 
+				    "quiz1": "你的工号", 
+				    "quiz2": "杭州", 
+				    "quiz3": "余杭区", 
+				    "like[write]": "on", 
+				    "like[read]": "on", 
+				    "like1[write]": "on", 
+				    "like1[read]": "on", 
+				    "close": "on", 
+				    "open": "on", 
+				    "sex": "男"
+				}
+		</div>
+		<p>
+			<script>
+				var form = {
+					    "title": "44444444444444444444444", 
+					    "username": "44444444444", 
+					    "phone": "13658965896", 
+					    "email": "4444@126.com", 
+					    "number": "444444444444", 
+					    "date": "2019-08-06", 
+					    "url": "https://www.baidu.com", 
+					    "identity": "132569856985698569", 
+					    "password": "123456789", 
+					    "price_min": "14", 
+					    "price_max": "88", 
+					    "interest": "0", 
+					    "quiz": "你工作的第一个城市", 
+					    "modules": "1", 
+					    "quiz1": "你的工号", 
+					    "quiz2": "杭州", 
+					    "quiz3": "余杭区", 
+					    "like[write]": "on", 
+					    "like[read]": "on", 
+					    "like1[write]": "on", 
+					    "like1[read]": "on", 
+					    "close": "on", 
+					    "open": "on", 
+					    "sex": "男"
+					}
+				console.log(typeof form)
+				console.log(form)
+				console.log(JSON.stringify(form))
+			</script>
+		</p>
+		<p>
+			2. 下拉框select接收的数据格式，是个json数组的形式  [{…}, {…}, {…}, {…}, {…}]
+		</p>
+		<div style="background: #F5F5DC;padding:10px;">
+			var data = [
+						    {
+						        "code": "default_group", 
+						        "name": "默认作业分组"
+						    }, 
+						    {
+						        "code": "嗯嗯", 
+						        "name": "尺寸"
+						    }, 
+						    {
+						        "code": "66666666", 
+						        "name": "66666666"
+						    }, 
+						    {
+						        "code": "uu", 
+						        "name": "uuu"
+						    }, 
+						    {
+						        "code": "作业组编码222", 
+						        "name": "作业组名称22"
+						    }
+						]
+
+		</div>
+	</body>
+</html>
