@@ -1,0 +1,647 @@
+<head>
+    <meta charset="UTF-8">
+    <title>layui 在修改页面，下拉框调接口数据实现级联下拉，并且先回显值</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+</head>
+
+<body>
+    <form class="layui-form" action="">
+        <!-- 练习id隐藏域 -->
+        <input hidden type="text" name="jobId" id='jobId' />
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习编码</label>
+                <div class="layui-input-block">
+                    <!-- 后台读取值 -->
+                    <input type="text" disabled name="jobCode" id="jobCode" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">练习类型</label>
+                <div class="layui-input-block">
+                    <select id='jobType' name="jobType">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习描述</label>
+                <div class="layui-input-block">
+                    <!-- 后台读取值 -->
+                    <input type="text" name="jobDesc" id='jobDesc' value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习注册中心</label>
+                <div class="layui-input-block">
+                    <select id='regCode' name="regCode">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习实例编码</label>
+                <div class="layui-input-block">
+                    <select name="jobmhxCode" id="jobmhxCode" lay-filter='jobmhxCode' lay-search="">
+                        <!-- 后台接口获取 -->
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习组编码</label>
+                <div class="layui-input-block">
+                    <select name="jobGroupCode" id="jobGroupCode" lay-search="">
+                        <!-- 后台接口获取 -->
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习提交周期</label>
+                <div class="layui-input-block">
+                    <select id='jobSubmitCycle' name="jobSubmitCycle">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习状态</label>
+                <div class="layui-input-block">
+                    <select id='jobStatus' name="jobStatus">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习执行次数</label>
+                <div class="layui-input-block">
+                    <select id='jobExcuteMode' name="jobExcuteMode">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习运行方式</label>
+                <div class="layui-input-block">
+                    <select id='jobRunMode' name="jobRunMode">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习组所属系统</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobCatalog" id="jobCatalog" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">cron表达式</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobCron" id="jobCron" value="" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习顺序</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobOrder" id="jobOrder" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习分片总数</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobShardingtotalcount" id="jobShardingtotalcount" value=""
+                        class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">分片序列号和参数</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobShardingitemparameters" id="jobShardingitemparameters" value=""
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习类</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobClass" id="jobClass" value="" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习自定义参数</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobParameter" id="jobParameter" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">练习启动开始时间</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobStartDate" id="jobStartDate" name="jobStartDate"
+                        lay-filter="jobStartDate" value="" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习结束运行时间</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobEndDate" lay-filter="jobEndDate" id="jobEndDate" value=""
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">时间误差秒数</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobMaxtimediffseconds" id="jobMaxtimediffseconds" value=""
+                        class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习监控端口</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobMonitor" id="jobMonitor" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">扫描修复周期</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobReconcileintervalminutes" id="jobReconcileintervalminutes" value=""
+                        class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">执行时状态</label>
+                <div class="layui-input-block">
+                    <!-- 后台接口获取 -->
+                    <input type="text" name="jobMonitorexecution" id="jobMonitorexecution" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style='width:215px;'>是否开启任务执行失效转移</label>
+                <div class="layui-input-block" id="jobFailover" style="margin-left:220px;" lay-filter='radio1'>
+                    <!-- 后台接口获取 -->
+                    <input type="radio" name="jobFailover" value="0" title="否">
+                    <input type="radio" name="jobFailover" value="1" title="是">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style='width:170px;'>是否开启错过任务重新执行</label>
+                <div class="layui-input-block" id="jobMisfire" style="margin-left:180px;">
+                    <!-- 后台接口获取 -->
+                    <input type="radio" name="jobMisfire" value="0" title="否">
+                    <input type="radio" name="jobMisfire" value="1" title="是">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style='width:215px;'>本地配置是否可覆盖注册中心配置</label>
+                <div class="layui-input-block" id="jobOverwrite" style="margin-left:220px;">
+                    <!-- 后台接口获取 -->
+                    <input type="radio" name="jobOverwrite" value="0" title="否">
+                    <input type="radio" name="jobOverwrite" value="1" title="是">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style='width:170px;'>练习是否禁止启动</label>
+                <div class="layui-input-block" style="margin-left:180px;">
+                    <input type="radio" name="jobDisabled" value="0" title="否">
+                    <input type="radio" name="jobDisabled" value="1" title="是">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style='width:215px;'>是否流式练习</label>
+                <div class="layui-input-block" style="margin-left:220px;">
+                    <input type="radio" name="jobStreamingprocess" value="0" title="否">
+                    <input type="radio" name="jobStreamingprocess" value="1" title="是">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">练习分片策略</label>
+                <div class="layui-input-block">
+                    <select id='jobShardingStrategyClass' name="jobShardingStrategyClass">
+                        <!-- 后台读取值 -->
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:145px;">定制异常处理类全路径</label>
+                <div class="layui-input-block" style="margin-left:150px;">
+                    <input type="text" disabled id="jobExceptionhandler" name="jobExceptionhandler" value=""
+                        class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">定制线程池全路径</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled value="" id='jobExecutorservicehandler' name="jobExecutorservicehandler"
+                        class="layui-input" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="text-align: center;width:80%;">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="submitmodify">确认</button>
+                <button class="layui-btn layui-btn-primary" lay-submit lay-filter="canceladd">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+<script>
+    layui.use(['layer', 'form', 'laydate'], function () {
+        var layer = layui.layer;
+        var form = layui.form;
+        var $ = layui.jquery;
+        var laydate = layui.laydate;
+
+        //渲染所有表单元素
+        form.render();
+
+        //日期时间
+        lay('#jobStartDate').each(function () {
+            laydate.render({
+                elem: this
+                , format: 'yyyy-MM-dd HH:mm:ss'
+                , type: 'datetime'
+                , trigger: 'click'
+            });
+        });
+        lay('#jobEndDate').each(function () {
+            laydate.render({
+                elem: this
+                , format: 'yyyy-MM-dd HH:mm:ss'
+                , type: 'datetime'
+                , trigger: 'click'
+            });
+        });
+
+        //日期格式转化
+        function renderTime(date) {
+            var dateee = new Date(date).toJSON();
+            return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        }
+        //通过接口取得练习类型，练习状态　
+
+        var jobTypes = []; //练习类型
+        var jobStatuss = [];  //练习状态
+        var regCodes = []; //练习注册中心
+        var jobGroupCodes = []; //练习组编码
+        var jobmhxCodes = []; //练习实例编码
+        var jobSubmitCycles = []; //练习提交周期
+        var jobExcuteModes = []; //练习执行次数
+        var jobRunModes = []; //练习运行方式
+        var jobShardingstrategys = []; //练习分片策略
+
+		//下拉框调接口回显
+        $.ajax({
+            url: batchUrl + '下拉框接口',
+            type: 'get',
+            success: function (data) {
+                jobTypes = data.jobType; //练习类型
+                jobStatuss = data.jobStatus;  //练习状态
+                regCodes = data.regCode;              
+                jobSubmitCycles = data.jobSubmitCycle;
+                jobExcuteModes = data.jobExcuteMode;
+                jobRunModes = data.jobRunMode;
+                jobShardingstrategys = data.jobShardingStrategyClass;
+
+            }
+        })
+       
+        
+        //调接口数据 ,先回显出练习编码的数据
+        var jobCode = window.sessionStorage.getItem('jobCode');
+        $.ajax({
+            url: batchUrl + '练习编码接口名称/'+jobCode,
+            type: 'get',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function (data) {
+                var datas = data.data;
+                $('#jobId').val(datas.jobId);
+                $('#jobCode').val(datas.jobCode);
+                  //调接口数据，获得练习实例编码下拉选值
+                $.ajax({
+                    url: batchUrl + 'get-job-instance-info',
+                    type: 'get',
+                    success: function (data) {
+                        var jobmhxCodes = data.data;
+                        $.each(jobmhxCodes, function (index, item) {
+                            if (!jobmhxCode) {
+                                var option = new Option(item.jobmhxName, item.jobmhxCode);
+                            } else {
+                                var option = new Option(item.jobmhxName, item.jobmhxCode);
+                                // // 如果是之前的内容则设置选中根据练习实例
+                                if (item.jobmhxCode == datas.jobmhxCode) {
+                                   option.setAttribute("selected", 'true');
+                                    $.ajax({
+                                            url: batchUrl + 'get-job-group-item/' + item.jobmhxCode,
+                                            type: 'get',
+                                            success: function (data) { 
+                                                var jobGroupCodes = data.data.jobGroupItem;
+                                                $.each(jobGroupCodes, function (index, item) {
+                                                    $("#jobGroupCode").append("<option value="+item.code+">"+item.name+"</option>");
+                                                });
+                                                form.render();//注意渲染页面表单，否则不显示数据
+                                            }
+                                    })
+                                 }
+                            };
+                            $('#jobmhxCode').append(option);//往下拉菜单里添加元素
+                            form.render(); //这个很重要
+
+                        })
+                    }
+                });
+                
+              //获取练习组编码下拉框值
+              var onejobmhxCode = '';
+                form.on("select(jobmhxCode)", function (data) {
+                   onejobmhxCode = data.value ;// 获取选中的值
+                    //练习组编码下拉选
+                    $.ajax({
+                        url: batchUrl + 'get-job-group-item/' + onejobmhxCode,
+                        type: 'get',
+                        success: function (data) { 
+                            // console.log(data);
+                            var jobGroupCodes = data.data.jobGroupItem;
+                            // console.log(jobGroupCodes);
+                            if(jobGroupCodes.length>0){
+                            //练习组编码下拉框
+                            $("#jobGroupCode").empty();//清空下拉框
+                            $("#jobGroupCode").append("<option value='0' placeholder='--请选择--'></option>");
+                            for(var i=0;i<jobGroupCodes.length;i++){
+                                var item=jobGroupCodes[i];
+                                $("#jobGroupCode").append("<option value="+item.code+">"+item.name+"</option>");
+                            }
+                        }else {
+                            console.log("error")
+                            $("#jobGroupCode").empty();//清空下拉框
+                            $("#jobGroupCode").append("<option value='' placeholder='请选择'>--请选择--</option>");
+                        }
+                        form.render();//注意渲染页面表单，否则不显示数据
+                    }
+                   })
+                });
+     
+                
+                //练习类型
+                $.each(jobTypes, function (index, item) {
+                    // console.log(datas.jobType);
+                    // console.log(item.code);
+                    if (!jobType) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobType) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobType').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                
+                })
+
+                $('#jobDesc').val(datas.jobDesc);
+                //   $("<option value="+datas.regCode+">"+datas.regCode+"</option>").appendTo("#regCode");
+                //   $("<option value="+datas.jobGroupCode+">"+datas.jobGroupCode+"</option>").appendTo("#jobGroupCode");
+                //   $("<option value="+datas.jobSubmitCycle+">"+datas.jobSubmitCycle+"</option>").appendTo("#jobSubmitCycle");
+                //练习状态
+                $.each(jobStatuss, function (index, item) {
+                    if (!jobStatus) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobStatus) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobStatus').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+
+                //练习注册中心
+                $.each(regCodes, function (index, item) {
+                    if (!regCode) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.regCode) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#regCode').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+                
+                
+                //练习提交周期
+                $.each(jobSubmitCycles, function (index, item) {
+                    if (!jobSubmitCycle) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobSubmitCycle) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobSubmitCycle').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+                //练习执行次数
+                $.each(jobExcuteModes, function (index, item) {
+                    if (!jobExcuteMode) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobExcuteMode) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobExcuteMode').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+                //练习运行方式
+                $.each(jobRunModes, function (index, item) {
+                    if (!jobRunMode) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobRunMode) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobRunMode').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+                //练习分片策略 jobShardingstrategyclass
+                $.each(jobShardingstrategys, function (index, item) {
+                    // console.log(jobShardingstrategys);
+                    // console.log(item);
+                    if (!jobShardingStrategyClass) {
+                        var option = new Option(item.name, item.code);
+                    } else {
+                        var option = new Option(item.name, item.code);
+                        // // 如果是之前的内容则设置选中
+                        if (item.code == datas.jobShardingStrategyClass) {
+                            option.setAttribute("selected", 'true');
+                        }
+                    };
+                    $('#jobShardingStrategyClass').append(option);//往下拉菜单里添加元素
+                    form.render(); //这个很重要
+                })
+
+                //   $("<option value="+datas.jobExcuteMode+">"+datas.jobExcuteMode+"</option>").appendTo("#jobExcuteMode");
+                //   $("<option value="+datas.jobRunMode+">"+datas.jobRunMode+"</option>").appendTo("#jobRunMode");
+                $('#jobCatalog').val(datas.jobCatalog);
+                $('#jobCron').val(datas.jobCron);
+                $('#jobOrder').val(datas.jobOrder);
+                $('#jobShardingtotalcount').val(datas.jobShardingtotalcount);
+                $('#jobShardingitemparameters').val(datas.jobShardingitemparameters);
+                $('#jobClass').val(datas.jobClass);
+                $('#jobParameter').val(data.jobParameter);
+                $('#jobStartDate').val(renderTime(datas.jobStartDate));
+                $('#jobEndDate').val(renderTime(datas.jobEndDate));
+                $('#jobMaxtimediffseconds').val(datas.jobMaxtimediffseconds);
+                $('#jobMonitor').val(datas.jobMonitor);
+                $('#jobReconcileintervalminutes').val(datas.jobReconcileintervalminutes);
+                $('#jobMonitorexecution').val(datas.jobMonitorexecution);
+
+                $("input[name=jobFailover][value=1]").attr("checked", datas.jobFailover == 1 ? true : false);
+                $("input[name=jobFailover][value=0]").attr("checked", datas.jobFailover == 0 ? true : false);
+
+                $("input[name=jobMisfire][value=1]").attr("checked", datas.jobMisfire == 1 ? true : false);
+                $("input[name=jobMisfire][value=0]").attr("checked", datas.jobMisfire == 0 ? true : false);
+
+                $("input[name=jobOverwrite][value=1]").attr("checked", datas.jobOverwrite == 1 ? true : false);
+                $("input[name=jobOverwrite][value=0]").attr("checked", datas.jobOverwrite == 0 ? true : false);
+
+                $("input[name=jobDisabled][value=1]").attr("checked", datas.jobDisabled == 1 ? true : false);
+                $("input[name=jobDisabled][value=0]").attr("checked", datas.jobDisabled == 0 ? true : false);
+
+                $("input[name=jobStreamingprocess][value=1]").attr("checked", datas.jobStreamingprocess == 1 ? true : false);
+                $("input[name=jobStreamingprocess][value=0]").attr("checked", datas.jobStreamingprocess == 0 ? true : false);
+
+                //   $("<option value="+datas.jobShardingstrategyclass+">"+datas.jobShardingstrategyclass+"</option>").appendTo("#jobShardingstrategyclass");
+                $('#jobExceptionhandler').val(datas.jobExceptionhandler);
+                $('#jobExecutorservicehandler').val(datas.jobExecutorservicehandler);
+
+                form.render();
+            }
+        })
+
+        window.sessionStorage.removeItem('jobCode');
+
+        //监听提交
+        form.on('submit(submitmodify)', function (data) {
+            //   layer.msg(JSON.stringify(data.field));
+            var fields = $(data.form).serialize();
+            // console.log(fields)
+            $.ajax({
+                url: batchUrl + 'upd-job-info',
+                type: 'put',
+                data: JSON.stringify(data.field),
+                dataType: 'json',
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    // console.log(data)
+                    parent.layui.table.reload('taskTable');
+                    //关闭弹窗
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                }
+            })
+            return false;
+
+        });
+        //取消按钮
+        form.on('submit(canceladd)', function () {
+            //关闭弹窗
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+
+            return false;
+        });
+    });
+</script>
