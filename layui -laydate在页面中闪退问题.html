@@ -1,0 +1,21 @@
+在页面中，如果遇到laydate点击闪退问题，可以按以下方式解决：
+//日期下拉获取值
+        var dataVal;
+        laydate.render({
+            elem: '#dateClk',
+            type: 'date',
+            done: function(value){
+                dataVal = value;
+            },
+            trigger: 'click'
+        });
+        
+        
+        如果绑定的元素非输入框，则默认事件为：click
+        
+        //自定义事件
+        laydate.render({ 
+          elem: '#test'
+          ,trigger: 'click' //采用click弹出
+        });
+   
